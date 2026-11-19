@@ -1,0 +1,44 @@
+digraph G {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=16, nodesep=0.22, ranksep=0.28, compound=true, pad=0.05, newrank=true];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=15, fillcolor="#eeeeee", color="#777777", margin="0.08,0.04"];
+  edge  [fontname="Helvetica", fontsize=14, color="#555555", arrowsize=0.7];
+
+  subgraph cluster_data { label="1. Data layer"; style="rounded,filled"; fillcolor="#f4f4f4"; color="#bbbbbb";
+    shots [label="Screenshot\ndiffs (16k)"];
+    cfg   [label="Display config\n+ build flags"];
+    split [label="Few labels L\n+ pool U"];
+    {rank=same; shots; cfg}
+  }
+  subgraph cluster_pre { label="2. Pre-processing"; style="rounded,filled"; fillcolor="#eef3f8"; color="#a9bfd6";
+    imp  [label="Impute +\nwinsorise"];
+    inter[label="Change × config\ninteractions"];
+    {rank=same; imp; inter}
+  }
+  subgraph cluster_alp { label="3. Proposed A-LP"; style="rounded,filled"; fillcolor="#fbeaec"; color="#d1495b";
+    node [fillcolor="#f6c9cf", color="#d1495b"];
+    anc  [label="Anchor LR\nprior p_a"];
+    knn  [label="kNN graph S\nEqs. (1)-(2)"];
+    seed [label="Seeds Y0 + λ·p_a\nEqs. (3)-(4)"];
+    prop [label="F ← αSF+(1−α)Y0\nEq. (5)"];
+    conv [shape=diamond, label="t < T ?", fillcolor="#ffffff", margin="0.02,0.02"];
+    soft [label="Soft labels q\nEq. (6)"];
+    dist [label="Distil GBM\nEq. (7)"];
+    fuse [label="Rank fusion\ns_i, Eq. (8)"];
+    {rank=same; anc; knn}
+    {rank=same; prop; conv}
+    {rank=same; soft; dist}
+  }
+  subgraph cluster_eval { label="4. Evaluation"; style="rounded,filled"; fillcolor="#f4f4f4"; color="#bbbbbb";
+    base [label="Baselines\npixel, SSIM,\nkNN, GBM, LR"];
+    met  [label="PR-AUC, F1,\nP@R90, FA/1k"];
+    {rank=same; base; met}
+  }
+  shots -> split [weight=10]; cfg -> split;
+  split -> imp [weight=10]; imp -> inter;
+  imp -> anc [weight=10, style=invis]; inter -> anc; inter -> knn [weight=5];
+  anc -> seed [weight=10]; knn -> seed; seed -> prop [weight=10];
+  prop -> conv; conv -> prop [label=" yes", constraint=false];
+  conv -> soft [label=" no"]; prop -> soft [style=invis, weight=10];
+  soft -> dist; soft -> fuse [style=invis, weight=10]; dist -> fuse; anc -> fuse [style=dashed, label=" p_a", constraint=false];
+  fuse -> base [style=invis, weight=10]; fuse -> met; base -> met;
+}

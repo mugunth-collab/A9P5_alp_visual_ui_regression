@@ -1,0 +1,15 @@
+method,device_class,mean,std
+A-LP (proposed),current_iphone,0.7339,0.0959
+A-LP (proposed),flagship_android,0.7183,0.0691
+A-LP (proposed),foldable_android,0.7896,0.0959
+A-LP (proposed),low_end_android,0.695,0.1326
+A-LP (proposed),mid_android,0.7449,0.111
+A-LP (proposed),older_iphone,0.6152,0.1264
+A-LP (proposed),tablet,0.7287,0.1141
+Sup. LR (labelled),current_iphone,0.7526,0.0899
+Sup. LR (labelled),flagship_android,0.7328,0.1375
+Sup. LR (labelled),foldable_android,0.804,0.0868
+Sup. LR (labelled),low_end_android,0.7233,0.1131
+Sup. LR (labelled),mid_android,0.7218,0.1237
+Sup. LR (labelled),older_iphone,0.6198,0.1442
+Sup. LR (labelled),tablet,0.7128,0.1022

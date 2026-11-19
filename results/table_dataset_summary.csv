@@ -1,0 +1,14 @@
+,0
+rows,16000
+columns,28
+defect_rate,0.11
+screens,900
+period,2025-01-01 to 2026-06-30
+defect_types,"{""none"": 14240, ""text_truncation"": 522, ""color_contrast"": 522, ""overlap"": 245, ""misalignment"": 210, ""clipped_image"": 142, ""missing_element"": 119}"
+device_classes,"{""tablet"": 2339, ""foldable_android"": 2335, ""older_iphone"": 2312, ""low_end_android"": 2304, ""current_iphone"": 2299, ""mid_android"": 2220, ""flagship_android"": 2191}"
+missing_rate,"{""ssim"": 0.0174375, ""alignment_deviation_px"": 0.01525}"
+winsorised_values,"{""os_versions_behind"": 0, ""font_scale"": 0, ""dark_mode"": 0, ""rtl_locale"": 0, ""component_count"": 142, ""style_change_in_build"": 0, ""layout_change_in_build"": 0, ""string_change_in_build"": 0, ""dynamic_content_ratio"": 156, ""has_animation"": 0, ""pixel_diff_pct"": 160, ""ssim"": 154, ""diff_region_count"": 33, ""largest_diff_region_pct"": 157, ""text_overflow_count"": 29, ""bbox_overlap_count"": 49, ""alignment_deviation_px"": 133, ""contrast_ratio_drop"": 158, ""element_count_delta"": 37}"
+features_used,45
+evidence_features,"[""text_overflow_count"", ""bbox_overlap_count"", ""alignment_deviation_px"", ""contrast_ratio_drop"", ""abs_elem_delta"", ""layout_x_font"", ""string_x_rtl_font"", ""style_x_dark"", ""layout_x_narrow"", ""largest_diff_region_pct"", ""diff_region_count""]"
+defect_rate_by_device,"{""current_iphone"": 0.0787, ""flagship_android"": 0.1041, ""foldable_android"": 0.1495, ""low_end_android"": 0.1267, ""mid_android"": 0.0878, ""older_iphone"": 0.1285, ""tablet"": 0.0932}"
+pixel_diff_pct_mean_defect_vs_ok,"[4.979123863636364, 3.7216108848314606]"

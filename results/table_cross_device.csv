@@ -1,0 +1,7 @@
+method,test,pr_auc_mean,pr_auc_std,f1_mean,f1_std
+A-LP (proposed),foldables+tablets,0.7718,0.0343,0.644,0.0874
+A-LP (proposed),phones,0.7528,0.058,0.6651,0.0628
+Sup. GBM (labelled),foldables+tablets,0.6532,0.0687,0.5662,0.0741
+Sup. GBM (labelled),phones,0.6412,0.0317,0.5924,0.0637
+Sup. LR (labelled),foldables+tablets,0.7685,0.0342,0.6556,0.0766
+Sup. LR (labelled),phones,0.7474,0.0398,0.6539,0.0425
